@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
+from app.api.v1.api import api_router
 
 # Create FastAPI app
 app = FastAPI(
@@ -36,6 +37,7 @@ async def health_check():
     return {"status": "healthy"}
 
 
-# Include API routers (we'll add these later)
+# Include API routers (
+app.include_router(api_router, prefix="/api/v1")
 # from app.api.v1.api import api_router
 # app.include_router(api_router, prefix="/api/v1")
