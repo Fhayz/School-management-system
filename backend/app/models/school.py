@@ -1,11 +1,13 @@
 from sqlalchemy import Column, String, Integer, Date, VARCHAR, Text, DateTime
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from app.db.database import Base
 from app.models.base import BaseMixin
 
 
 class School(Base, BaseMixin):
     __tablename__ = "schools"
+    
     
     # Basic Info
     name = Column(String(255), nullable=False)
@@ -36,3 +38,6 @@ class School(Base, BaseMixin):
     
     def __repr__(self):
         return f"<School {self.name}>"
+    
+    #Relationships
+    students = relationship("Student", back_populates="school", cascade="all, delete")

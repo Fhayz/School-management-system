@@ -2,6 +2,7 @@ from sqlalchemy import Column, DateTime, Boolean
 from sqlalchemy.sql import func
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
+from app.db.database import Base
 
 
 class BaseMixin:
