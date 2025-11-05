@@ -16,7 +16,7 @@ class Attendance(Base, BaseMixin):
     __tablename__ = "attendance"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
-    student_id = Column(UUID(as_uuid=True), ForeignKey("students.id"), nullable=False)
+    student_id = Column(UUID(as_uuid=True), ForeignKey("students.id"), nullable=True)
     class_id = Column(UUID(as_uuid=True), ForeignKey("classes.id"), nullable=False)
     subject_id = Column(UUID(as_uuid=True), ForeignKey("subjects.id"), nullable=True)
     date = Column(Date, nullable=False)
