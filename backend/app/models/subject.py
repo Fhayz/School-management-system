@@ -20,3 +20,4 @@ class Subject(Base, BaseMixin):
     school = relationship("School", back_populates="subjects")
     teacher = relationship("Teacher", back_populates="subjects")
     classes = relationship("Class", secondary="class_subjects", back_populates="subjects")
+    attendance_records = relationship("Attendance", back_populates="subject")

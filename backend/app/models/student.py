@@ -25,3 +25,4 @@ class Student(Base, BaseMixin):
 
     school = relationship("School", back_populates="students")
     classes = relationship("Class", secondary="class_students", back_populates="students")  
+    attendance_records = relationship("Attendance", back_populates="student")
