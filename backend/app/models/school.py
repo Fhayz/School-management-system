@@ -41,3 +41,7 @@ class School(Base, BaseMixin):
     
     #Relationships
     students = relationship("Student", back_populates="school", cascade="all, delete")
+    teachers = relationship("Teacher", back_populates="school", cascade="all, delete")
+    classes = relationship("Class", back_populates="school", cascade="all, delete")
+    subjects = relationship("Subject", back_populates="school", cascade="all, delete")
+
