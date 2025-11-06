@@ -7,7 +7,8 @@ from app.models.teacher import Teacher
 from app.models.class_model import Class
 from app.models.subject import Subject
 from app.models.attendance import Attendance
+from app.models.result import Result
 
 # This ensures all models are imported when migrations run
-__all__ = ["Base", "School", "User", "SubscriptionPlan", "Student", "Teacher", "Class", "Subject", "Attendance"]
+__all__ = ["Base", "School", "User", "SubscriptionPlan", "Student", "Teacher", "Class", "Subject", "Attendance", "Result"]
 

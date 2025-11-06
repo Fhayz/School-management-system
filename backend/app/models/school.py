@@ -45,4 +45,5 @@ class School(Base, BaseMixin):
     classes = relationship("Class", back_populates="school", cascade="all, delete")
     subjects = relationship("Subject", back_populates="school", cascade="all, delete")
     attendance_records = relationship("Attendance", back_populates="school", cascade="all, delete")
+    results = relationship("Result", back_populates="school", cascade="all, delete")    
 

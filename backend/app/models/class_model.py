@@ -37,3 +37,4 @@ class Class(Base, BaseMixin):
     subjects = relationship("Subject", secondary=class_subjects, back_populates="classes")
     students = relationship("Student", secondary=class_students, back_populates="classes")
     attendance_records = relationship("Attendance", back_populates="class_obj")
+    results = relationship("Result", back_populates="class_obj")
