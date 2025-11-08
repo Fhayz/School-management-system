@@ -14,7 +14,8 @@ def register(data: UserRegister, db: Session = Depends(get_db)):
     try:
         user = register_user(db, data, school_id)
         access_token = get_access_token(user)
-        return Token(access_token=access_token)
+        # Return both toekn and role (from user object)
+        return Token(access_token=access_token, role=user.role)
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
@@ -25,4 +26,4 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect email or password")
     access_token = get_access_token(user)
-    return Token(access_token=access_token)
+    return Token(access_token=access_token, role=user.role)
