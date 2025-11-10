@@ -9,7 +9,7 @@ function ClassEnrollment({ classId, visible, onClose, currentStudents, reloadCla
 
   useEffect(() => {
     // Fetch student list
-    apiClient.get("http://localhost:8000/api/v1/students/")
+    apiClient.get("http://localhost:8001/api/v1/students/")
       .then(res => setStudentOptions(res.data.map(s => ({
         label: `${s.first_name} ${s.last_name}`,
         value: s.id
@@ -22,7 +22,7 @@ function ClassEnrollment({ classId, visible, onClose, currentStudents, reloadCla
 
   const handleOk = () => {
     setConfirmLoading(true);
-    apiClient.post(`http://localhost:8000/api/v1/classes/${classId}/enroll/`, {
+    apiClient.post(`http://localhost:8001/api/v1/classes/${classId}/enroll/`, {
       student_ids: studentIds
     }).then(() => {
         message.success("Class enrollments updated");

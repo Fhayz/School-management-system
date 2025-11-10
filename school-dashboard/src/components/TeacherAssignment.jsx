@@ -8,7 +8,7 @@ function TeacherAssignment({ classId, visible, onClose, currentTeachers, reloadC
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   useEffect(() => {
-    apiClient.get("http://localhost:8000/api/v1/teachers/")
+    apiClient.get("http://localhost:8001/api/v1/teachers/")
       .then(res => setTeacherOptions(res.data.map(t => ({
         label: `${t.first_name} ${t.last_name}`,
         value: t.id
@@ -21,7 +21,7 @@ function TeacherAssignment({ classId, visible, onClose, currentTeachers, reloadC
 
   const handleOk = () => {
     setConfirmLoading(true);
-    apiClient.post(`http://localhost:8000/api/v1/classes/${classId}/assign-teachers/`, {
+    apiClient.post(`http://localhost:8001/api/v1/classes/${classId}/assign-teachers/`, {
       teacher_ids: teacherIds
     }).then(() => {
         message.success("Teachers successfully assigned to class");

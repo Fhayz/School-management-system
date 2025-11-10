@@ -8,7 +8,7 @@ function ClassSubjectAssignment({ classId, visible, onClose, currentSubjects, re
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   useEffect(() => {
-    apiClient.get("http://localhost:8000/api/v1/subjects/")
+    apiClient.get("http://localhost:8001/api/v1/subjects/")
       .then(res => setSubjectOptions(res.data.map(s => ({
         label: `${s.name} (${s.code})`,
         value: s.id
@@ -21,7 +21,7 @@ function ClassSubjectAssignment({ classId, visible, onClose, currentSubjects, re
 
   const handleOk = () => {
     setConfirmLoading(true);
-    apiClient.post(`http://localhost:8000/api/v1/classes/${classId}/assign-subjects/`, {
+    apiClient.post(`http://localhost:8001/api/v1/classes/${classId}/assign-subjects/`, {
       subject_ids: subjectIds
     }).then(() => {
         message.success("Subjects assigned to class");

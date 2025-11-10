@@ -12,7 +12,7 @@ function ClassAttendanceModal({ classId, visible, onClose, reloadClass }) {
   // Fetch students in class
   useEffect(() => {
     if (classId && visible) {
-      apiClient.get(`http://localhost:8000/api/v1/classes/${classId}/students/`)
+      apiClient.get(`http://localhost:8001/api/v1/classes/${classId}/students/`)
         .then(res => setStudents(res.data));
     }
   }, [classId, visible]);
@@ -20,7 +20,7 @@ function ClassAttendanceModal({ classId, visible, onClose, reloadClass }) {
   // Fetch attendance for selected date
   useEffect(() => {
     if (classId && date) {
-      apiClient.get(`http://localhost:8000/api/v1/attendance/`, {
+      apiClient.get(`http://localhost:8001/api/v1/attendance/`, {
         params: {
           class_id: classId,
           date: date.format("YYYY-MM-DD")
@@ -44,7 +44,7 @@ function ClassAttendanceModal({ classId, visible, onClose, reloadClass }) {
 
   const handleSave = () => {
     setSaving(true);
-    apiClient.post(`http://localhost:8000/api/v1/attendance/mark/`, {
+    apiClient.post(`http://localhost:8001/api/v1/attendance/mark/`, {
       class_id: classId,
       date: date.format("YYYY-MM-DD"),
       records: students.map(s => ({

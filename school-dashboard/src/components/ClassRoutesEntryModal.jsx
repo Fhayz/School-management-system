@@ -48,7 +48,7 @@ function ClassTable() {
 
   const fetchClasses = () => {
     setLoading(true);
-    apiClient.get("http://localhost:8000/api/v1/classes/")
+    apiClient.get("http://localhost:8001/api/v1/classes/")
       .then(res => setClasses(res.data))
       .finally(() => setLoading(false));
   };
@@ -66,7 +66,7 @@ function ClassTable() {
   };
 
   const onDelete = (id) => {
-    apiClient.delete(`http://localhost:8000/api/v1/classes/${id}`)
+    apiClient.delete(`http://localhost:8001/api/v1/classes/${id}`)
       .then(() => {
         message.success("Class deleted");
         fetchClasses();
@@ -75,8 +75,8 @@ function ClassTable() {
 
   const onFinish = (values) => {
     const api = editing
-      ? apiClient.put(`http://localhost:8000/api/v1/classes/${editing.id}`, values)
-      : apiClient.post("http://localhost:8000/api/v1/classes/", values);
+      ? apiClient.put(`http://localhost:8001/api/v1/classes/${editing.id}`, values)
+      : apiClient.post("http://localhost:8001/api/v1/classes/", values);
     api.then(() => {
       message.success(editing ? "Class updated" : "Class added");
       setModal(false);

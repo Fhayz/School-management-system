@@ -11,7 +11,7 @@ class User(Base, BaseMixin):
     school_id = Column(UUID(as_uuid=True), ForeignKey('schools.id', ondelete='CASCADE'), nullable=False, index=True)
     
     # Authentication
-    email = Column(String(255), nullable=False, index=True)
+    email = Column(String(255), nullable=False, unique=True, index=True)
     phone = Column(String(20))
     password_hash = Column(String(255), nullable=False)
     

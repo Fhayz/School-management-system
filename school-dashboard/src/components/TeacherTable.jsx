@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Modal, Form, Input, Space, Popconfirm, message, DatePicker, Select } from "antd";
 import {apiClient} from "../api";
+import dayjs from "dayjs";
 
 const columns = [
   { title: "First Name", dataIndex: "first_name", key: "first_name" },
@@ -41,7 +42,7 @@ function TeacherTable() {
     setEditing(record);
     form.setFieldsValue({
       ...record,
-      date_of_birth: record.date_of_birth ? record.date_of_birth : null
+      date_of_birth: record.date_of_birth ? dayjs(record.date_of_birth, "YYYY-MM-DD") : null
     });
     setModal(true);
   };
